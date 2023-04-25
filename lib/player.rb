@@ -29,4 +29,49 @@ class Player
     end
 end
 
+class HumanPlayer < Player
+    attr_accessor :weapon_level
+
+    def initialize(name)
+        @life_points = 100
+        @weapon_level = 1
+        super(name)
+    end
+
+    def show_state
+        puts "#{@human_name} a #{@human_life_points} points de vie avec une arme de niveau #{@weapon_level}"
+    end
+
+    def compute_damage
+        rand(1..6) * @weapon_level
+    end
+
+    def search_weapon
+        rand(1..6) = new_weapon
+        puts "Tu as trouvé une arme de niveau #{new_weapon}"
+        if new_weapon > @weapon_level
+            @weapon_level = new_weapon
+            puts "Youhou ! Elle est meilleure que ton arme actuelle : tu la prends"
+        elsif new_weapon <= @weapon_level
+                puts "M@*#$... elle n'est pas mieux que ton arme actuelle..."
+            end
+        end
+    end
+
+    def search_health_pack
+        rand(1..6) = health_pack
+        if health_pack == 1
+            puts "Tu n'as rien trouvé..."
+        elsif health_pack >= 2 && <= 5
+            @life_points += 50
+            @life_points = [@life_points, 100].min
+                puts "Bravo, tu as trouvé un pack de +50 points de vie"
+        elsif health_pack == 6
+            @life_points += 80
+            @life_points = [@life_points, 100].min
+                puts "Waow, tu as trouvé un pack de +80 points de vie !"
+            end    
+        end
+    end
+end
 
